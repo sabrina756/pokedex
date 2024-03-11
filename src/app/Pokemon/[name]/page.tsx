@@ -1,10 +1,10 @@
 
 'use client'
 
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import ErrorComponent from '@/app/Pokemon/[name]/error';
 import Loading from '@/app/Pokemon/[name]/loading';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
 
 interface PokemonSpeciesDetails {
   flavor_text_entries: { flavor_text: string; language: { name: string } }[];
@@ -58,7 +58,7 @@ const PokemonDetailsPage: React.FC = () => {
               name: pokemonData.name,
               types: pokemonData.types,
               sprites: pokemonData.sprites,
-              description: description.replace(/'/g, "&apos;"), // Échapper les apostrophes
+              description: description.replace(/'/g, "&rsquo;"), // Échapper les apostrophes avec &rsquo;
               abilities: abilities,
               hiddenAbilities: hiddenAbilities,
               height: pokemonData.height,
@@ -88,17 +88,17 @@ const PokemonDetailsPage: React.FC = () => {
 
   return (
     <div style={{ textAlign: 'center', alignItems: 'center', fontSize: '20px', color: '#333', padding: '20px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-    <h1 style={{ color: 'black', marginBottom: '20px', textTransform: 'capitalize', fontSize: '3rem' }}>{pokemonDetails.name}</h1>
-    <p style={{ fontSize: '2rem' }}>ID : {pokemonDetails.id}</p>
-    <p style={{ fontSize: '2rem' }}>Types : {pokemonDetails.types.map((type, index) => <span key={index} style={{ backgroundColor: '#e0e0e0', borderRadius: '5px', padding: '2px 6px', marginRight: '5px' }}>{type.type.name}</span>)}</p>
-    <img src={pokemonDetails.sprites.front_default} alt={`${pokemonDetails.name} sprite`} style={{ display: "flex", justifyContent: 'center', margin: 'auto', borderRadius: '50%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', marginBottom: '20px', width: '200px', height: '200px' }} />
-    <p style={{ fontSize: '2rem' }}>Description: {pokemonDetails.description}</p>
-    <p style={{ fontSize: '2rem' }}>Poids : {pokemonDetails.weight / 10} kg</p>
-    <p style={{ fontSize: '2rem' }}>Taille : {pokemonDetails.height / 10} m</p>
-    <p style={{ fontSize: '2rem' }}>Capacités : {pokemonDetails.abilities.map((ability, index) => <span key={index} style={{ backgroundColor: '#e0e0e0', borderRadius: '5px', padding: '2px 6px', marginRight: '5px' }} >{ability}</span>)}</p>
-    <p style={{ fontSize: '2rem' }}>Couleur : {pokemonDetails.color}</p>
-    <p style={{ fontSize: '2rem' }}>Groupes d'œufs : {pokemonDetails.eggGroups.join(', ')}</p>
-  </div>
+      <h1 style={{ color: 'black', marginBottom: '20px', textTransform: 'capitalize', fontSize: '3rem' }}>{pokemonDetails.name}</h1>
+      <p style={{ fontSize: '2rem' }}>ID : {pokemonDetails.id}</p>
+      <p style={{ fontSize: '2rem' }}>Types : {pokemonDetails.types.map((type, index) => <span key={index} style={{ backgroundColor: '#e0e0e0', borderRadius: '5px', padding: '2px 6px', marginRight: '5px' }}>{type.type.name}</span>)}</p>
+      <img src={pokemonDetails.sprites.front_default} alt={`${pokemonDetails.name} sprite`} width={200} height={200} style={{ display: "flex", justifyContent: 'center', margin: 'auto', borderRadius: '50%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', marginBottom: '20px' }} />
+      <p style={{ fontSize: '2rem' }}>Description: {pokemonDetails.description}</p>
+      <p style={{ fontSize: '2rem' }}>Poids : {pokemonDetails.weight / 10} kg</p>
+      <p style={{ fontSize: '2rem' }}>Taille : {pokemonDetails.height / 10} m</p>
+      <p style={{ fontSize: '2rem' }}>Capacités : {pokemonDetails.abilities.map((ability, index) => <span key={index} style={{ backgroundColor: '#e0e0e0', borderRadius: '5px', padding: '2px 6px', marginRight: '5px' }} >{ability}</span>)}</p>
+      <p style={{ fontSize: '2rem' }}>Couleur : {pokemonDetails.color}</p>
+      <p style={{ fontSize: '2rem' }}>Groupes d'œufs : {pokemonDetails.eggGroups.join(', ')}</p>
+    </div>
   );
 };
 

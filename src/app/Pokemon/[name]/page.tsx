@@ -4,7 +4,6 @@
 import ErrorComponent from '@/app/Pokemon/[name]/error';
 import Loading from '@/app/Pokemon/[name]/loading';
 import axios from 'axios';
-import Image from 'next/image'; // Importer le composant Image de next/image
 import React, { useEffect, useState } from 'react';
 
 interface PokemonSpeciesDetails {
@@ -93,7 +92,6 @@ const PokemonDetailsPage: React.FC = () => {
     <p style={{ fontSize: '2rem' }}>ID : {pokemonDetails.id}</p>
     <p style={{ fontSize: '2rem' }}>Types : {pokemonDetails.types.map((type, index) => <span key={index} style={{ backgroundColor: '#e0e0e0', borderRadius: '5px', padding: '2px 6px', marginRight: '5px' }}>{type.type.name}</span>)}</p>
     <img src={pokemonDetails.sprites.front_default} alt={`${pokemonDetails.name} sprite`} style={{ display: "flex", justifyContent: 'center', margin: 'auto', borderRadius: '50%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', marginBottom: '20px', width: '200px', height: '200px' }} />
-    {/* Utilisez directement la balise <img> */}
     <p style={{ fontSize: '2rem' }}>Description: {pokemonDetails.description}</p>
     <p style={{ fontSize: '2rem' }}>Poids : {pokemonDetails.weight / 10} kg</p>
     <p style={{ fontSize: '2rem' }}>Taille : {pokemonDetails.height / 10} m</p>

@@ -97,7 +97,7 @@ const PokemonDetailsPage: React.FC = () => {
       <p style={{ fontSize: '2rem' }}>Taille : {pokemonDetails.height / 10} m</p>
       <p style={{ fontSize: '2rem' }}>Capacités : {pokemonDetails.abilities.map((ability, index) => <span key={index} style={{ backgroundColor: '#e0e0e0', borderRadius: '5px', padding: '2px 6px', marginRight: '5px' }} >{ability}</span>)}</p>
       <p style={{ fontSize: '2rem' }}>Couleur : {pokemonDetails.color}</p>
-      <p style={{ fontSize: '2rem' }}>Groupes d'œufs : {pokemonDetails.eggGroups.join(', ')}</p>
+      <p style={{ fontSize: '2rem' }}>Groupes d œufs : {pokemonDetails.eggGroups.join(', ')}</p>
     </div>
   );
 };

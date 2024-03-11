@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Loading from '@/app/Pokemon/[name]/loading'; // Import correct du composant Loading
-import ErrorComponent from '@/app/Pokemon/[name]/error'; // Import correct du composant d'erreur
+import Loading from '@/app/Pokemon/[name]/loading'; // Chemin correct du composant Loading
+import ErrorComponent from '@/app/Pokemon/[name]/error'; // Chemin correct du composant d'erreur
 
 // Définir l'interface pour les détails de l'espèce du Pokémon
 interface PokemonSpeciesDetails {
@@ -102,7 +102,7 @@ const PokemonDetailsPage: React.FC = () => {
     <div style={{ textAlign: 'center', alignItems:'center' , fontSize: '20px', color: '#333', padding: '20px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
     <h1 style={{ color: 'black', marginBottom: '20px', textTransform: 'capitalize', fontSize:'3rem' }}>{pokemonDetails.name}</h1>
     <p style={{fontSize:'2rem'}}>ID : {pokemonDetails.id}</p>
-    <p style={{fontSize:'2rem'}}>Types : {pokemonDetails.types.map((type) => <span style={{ backgroundColor: '#e0e0e0', borderRadius: '5px', padding: '2px 6px', marginRight: '5px' }}>{type.type.name}</span>)}</p>
+    <p style={{fontSize:'2rem'}}>Types : {pokemonDetails.types.map((type, index) => <span key={index} style={{ backgroundColor: '#e0e0e0', borderRadius: '5px', padding: '2px 6px', marginRight: '5px' }}>{type.type.name}</span>)}</p>
     <img src={pokemonDetails.sprites.front_default} alt={`${pokemonDetails.name} sprite`} style={{display:"flex", justifyContent:'center', margin:'auto' , borderRadius: '50%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', marginBottom: '20px' }} />
     <p style={{fontSize:'2rem'}}>Description: {pokemonDetails.description}</p>
     <p style={{fontSize:'2rem'}} >Poids : {pokemonDetails.weight / 10} kg</p>
@@ -110,7 +110,6 @@ const PokemonDetailsPage: React.FC = () => {
     <p style={{fontSize:'2rem'}}>Capacités : {pokemonDetails.abilities.map((ability, index) => <span key={index} style={{ backgroundColor: '#e0e0e0', borderRadius: '5px', padding: '2px 6px', marginRight: '5px' }} >{ability}</span>)}</p>
     <p style={{fontSize:'2rem'}}>Couleur : {pokemonDetails.color}</p>
     <p style={{fontSize:'2rem'}}>Groupes d'œufs : {pokemonDetails.eggGroups.join(', ')}</p>
-   
   </div>
   );
 };
